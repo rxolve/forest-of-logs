@@ -7,7 +7,7 @@ set -e
 
 FOL_DIR="$(cd "$(dirname "$0")" && pwd)"
 SHELL_RC=""
-COMMANDS_DIR="$HOME/.claude/commands"
+SKILLS_DIR="$HOME/.claude/skills/fol"
 
 # 셸 설정 파일 감지
 if [ -f "$HOME/.zshrc" ]; then
@@ -32,20 +32,10 @@ if [ -n "$SHELL_RC" ]; then
   fi
 fi
 
-# 2. Claude Code 글로벌 커맨드 심볼릭 링크
-mkdir -p "$COMMANDS_DIR"
-
-if [ -L "$COMMANDS_DIR/fol.md" ]; then
-  echo "[skip] ~/.claude/commands/fol.md 심볼릭 링크가 이미 존재합니다."
-elif [ -f "$COMMANDS_DIR/fol.md" ]; then
-  echo "[update] 기존 fol.md를 심볼릭 링크로 교체합니다."
-  rm "$COMMANDS_DIR/fol.md"
-  ln -s "$FOL_DIR/.claude/commands/fol.md" "$COMMANDS_DIR/fol.md"
-  echo "[done] ~/.claude/commands/fol.md → $FOL_DIR/.claude/commands/fol.md"
-else
-  ln -s "$FOL_DIR/.claude/commands/fol.md" "$COMMANDS_DIR/fol.md"
-  echo "[done] ~/.claude/commands/fol.md → $FOL_DIR/.claude/commands/fol.md"
-fi
+# 2. Claude Code /fol 스킬 설치
+mkdir -p "$SKILLS_DIR"
+cp "$FOL_DIR/.claude/skills/fol/SKILL.md" "$SKILLS_DIR/SKILL.md"
+echo "[done] /fol 스킬 설치 → $SKILLS_DIR/SKILL.md"
 
 # 3. pnpm 의존성 설치
 if command -v pnpm &>/dev/null; then
