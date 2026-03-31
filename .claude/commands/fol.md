@@ -11,6 +11,9 @@
    - 디렉토리가 없으면 생성합니다.
    - 오늘 날짜 기준으로 파일명을 정합니다.
    - 이미 파일이 있으면, 기존 내용을 읽고 오늘 세션의 내용을 합쳐서 업데이트합니다.
+4. 일지를 저장한 후, `$FOL_PATH` 디렉토리에서 git commit + push를 실행합니다.
+   - `cd $FOL_PATH && git add content/ && git commit -m "log: YYYY-MM-DD" && git push`
+   - 커밋 메시지는 `log: YYYY-MM-DD` 형식입니다.
 
 ## 문체: 무라카미 하루키
 
