@@ -15,10 +15,45 @@ description: 오늘의 개발 세션을 하루키 문체로 요약하여 Forest 
    - 저장 경로: `$FOL_PATH/content/entries/YYYY/MM/YYYY-MM-DD.md`
    - 디렉토리가 없으면 생성합니다.
    - 오늘 날짜 기준으로 파일명을 정합니다.
-   - 이미 파일이 있으면, 기존 내용을 읽고 오늘 세션의 내용을 합쳐서 업데이트합니다.
+   - 이미 파일이 있으면, 아래 **병합 규칙**에 따라 기존 내용을 유지하면서 이어 붙입니다.
 4. 일지를 저장한 후, `$FOL_PATH` 디렉토리에서 git commit + push를 실행합니다.
    - `cd $FOL_PATH && git add content/ && git commit -m "log: YYYY-MM-DD" && git push`
    - 커밋 메시지는 `log: YYYY-MM-DD` 형식입니다.
+
+## 병합 규칙 (같은 날짜 파일이 이미 있을 때)
+
+기존 파일이 있으면 절대 덮어쓰지 마세요. 아래 절차를 따릅니다:
+
+1. 기존 파일을 읽는다
+2. **프론트매터**: tags 배열을 기존 + 새 태그의 합집합으로 업데이트한다. title, date, style은 유지한다. project는 쉼표로 이어 붙인다 (중복이면 유지).
+3. **한국어 본문**: 기존 한국어 본문 끝에 `---` 구분선을 추가하고, 새 세션의 한국어 본문을 이어 붙인다.
+4. **영문 본문**: 동일하게 기존 영문 본문 끝에 `---` 구분선을 추가하고, 새 세션의 영문 본문을 이어 붙인다.
+
+예시 (두 번째 세션 추가 후):
+
+```markdown
+---
+title: '첫 세션의 제목 유지'
+date: '2026-03-31'
+style: 'murakami'
+tags: ['next.js', 'architecture', 'debugging']
+project: 'forest-of-logs'
+---
+
+첫 번째 세션의 한국어 본문...
+
+---
+
+두 번째 세션의 한국어 본문...
+
+<!-- lang:en -->
+
+First session English text...
+
+---
+
+Second session English text...
+```
 
 ## 문체: 무라카미 하루키
 
