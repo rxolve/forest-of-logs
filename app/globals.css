@@ -1,0 +1,120 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Light palette — aged paper + forest */
+  --color-paper: #faf6f1;
+  --color-ink: #2c2c2c;
+  --color-forest: #4a6741;
+  --color-bark: #8b7355;
+  --color-muted: #a89f91;
+
+  /* Dark palette */
+  --color-paper-dark: #1a1a1a;
+  --color-ink-dark: #e0dbd4;
+  --color-forest-dark: #7aab6f;
+  --color-bark-dark: #c4a882;
+  --color-muted-dark: #6b6358;
+
+  /* Typography */
+  --font-serif: 'Literata', 'Noto Serif KR', Georgia, serif;
+  --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system,
+    BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-serif);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.8;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+:is(.dark) body {
+  background-color: var(--color-paper-dark);
+  color: var(--color-ink-dark);
+}
+
+/* Prose customization */
+.prose {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-links: var(--color-forest);
+  --tw-prose-code: var(--color-forest);
+  max-width: 680px;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+:is(.dark) .prose {
+  --tw-prose-body: var(--color-ink-dark);
+  --tw-prose-headings: var(--color-ink-dark);
+  --tw-prose-links: var(--color-forest-dark);
+  --tw-prose-code: var(--color-forest-dark);
+}
+
+.prose p {
+  margin-bottom: 1.5em;
+}
+
+.prose a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--color-bark);
+}
+
+:is(.dark) .prose a:hover {
+  color: var(--color-bark-dark);
+}
+
+/* Code block styling */
+.prose pre {
+  background-color: #1e1e2e;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+.prose :not(pre) > code {
+  background-color: color-mix(in srgb, var(--color-forest) 10%, transparent);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+:is(.dark) .prose :not(pre) > code {
+  background-color: color-mix(
+    in srgb,
+    var(--color-forest-dark) 15%,
+    transparent
+  );
+}
+
+/* Selection */
+::selection {
+  background-color: color-mix(in srgb, var(--color-forest) 25%, transparent);
+}
+
+:is(.dark) ::selection {
+  background-color: color-mix(
+    in srgb,
+    var(--color-forest-dark) 30%,
+    transparent
+  );
+}

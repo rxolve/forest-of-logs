@@ -1,0 +1,108 @@
+# 로그의 숲 — Forest of Logs
+
+개발 세션을 하루키 문체로 기록하는 개인 개발 일지 블로그.
+
+## 빠른 시작
+
+```bash
+git clone <repo-url> && cd forest-of-logs
+./setup.sh        # FOL_PATH 환경변수 + /fol 커맨드 + 의존성 설치
+source ~/.zshrc   # 환경변수 적용
+```
+
+셋업 후 아무 프로젝트에서 Claude Code에 `/fol`을 입력하면 오늘의 개발 일지가 자동 생성됩니다.
+
+### setup.sh가 하는 일
+
+1. `FOL_PATH` 환경변수를 셸 설정(`.zshrc`/`.bashrc`)에 등록
+2. `.claude/commands/fol.md`를 `~/.claude/commands/fol.md`에 심볼릭 링크
+3. `pnpm install` 실행
+
+---
+
+## 기술 스택
+
+- **Framework**: Next.js 16 (App Router) + React 19 + TypeScript
+- **Styling**: Tailwind CSS 4 + 커스텀 prose
+- **Content**: gray-matter + next-mdx-remote
+- **Code Highlight**: rehype-pretty-code + shiki
+- **Theme**: next-themes (light/dark)
+- **Export**: `output: 'export'` (정적 빌드)
+- **Package Manager**: pnpm
+
+## 디렉토리 구조
+
+```
+app/_types/            → 타입 정의
+app/_lib/              → 유틸리티 (entries.ts, mdx.ts, metadata.ts)
+app/_components/       → 공유 컴포넌트
+content/entries/       → 마크다운 일지 (YYYY/MM/YYYY-MM-DD.md)
+styles/                → 문체 시스템 (murakami.ts 등)
+.claude/commands/fol.md → /fol 커맨드 원본 (심볼릭 링크 소스)
+setup.sh               → 환경 셋업 스크립트
+```
+
+## 네이밍 규칙
+
+| 대상 | 규칙 | 예시 |
+|------|------|------|
+| 파일/폴더 | kebab-case | `entry-card.tsx` |
+| React 컴포넌트 | PascalCase | `EntryCard` |
+| 타입/인터페이스 | PascalCase | `EntryMeta` |
+| 함수 | camelCase | `getAllEntries` |
+
+## 코드 스타일
+
+- Prettier: 싱글 따옴표, 세미콜론, 2칸 들여쓰기, trailing comma es5
+- `import type` 사용 (런타임에 불필요한 타입)
+
+---
+
+## /fol 커맨드
+
+Claude Code 글로벌 슬래시 커맨드. 어떤 프로젝트에서든 `/fol` 입력 시:
+
+1. 세션 작업을 돌아보고 핵심 2-3가지 파악
+2. 하루키 문체로 한/영 일지 작성
+3. `$FOL_PATH/content/entries/YYYY/MM/YYYY-MM-DD.md`에 저장
+
+커맨드 원본: `.claude/commands/fol.md`
+심볼릭 링크: `~/.claude/commands/fol.md` → 레포 내 원본
+
+커맨드를 수정하면 레포를 pull한 모든 환경에서 자동 반영됩니다.
+
+---
+
+## 일지 문체 가이드
+
+무라카미 하루키 스타일:
+- 1인칭 시점 ("나는", "I")
+- 따뜻한 회고체, 일상 메타포 (요리, 산책, 음악, 날씨)
+- 이모지, 불릿 포인트 사용 금지
+- 감정의 미묘한 결 표현
+- 하루의 시간, 계절감을 자연스럽게 녹이기
+
+### 출력 형식
+
+```markdown
+---
+title: '비유적이고 서정적인 제목'
+date: 'YYYY-MM-DD'
+style: 'murakami'
+tags: ['관련', '태그']
+project: '프로젝트명'
+---
+
+한국어 본문...
+
+<!-- lang:en -->
+
+English translation...
+```
+
+### 주의사항
+
+- 기술 용어를 나열하지 말 것 — 이야기 속에 자연스럽게 녹일 것
+- 제목은 작업 내용을 직접 설명하지 않고, 비유적으로 표현할 것
+- 코드 블록은 꼭 필요한 경우에만 최소한으로 사용할 것
+- 영문은 별도 창작이 아닌, 한국어의 충실한 번역일 것
