@@ -1,3 +1,8 @@
+---
+name: fol
+description: 오늘의 개발 세션을 하루키 문체로 요약하여 Forest of Logs에 일지를 기록합니다.
+---
+
 오늘의 개발 일지를 "로그의 숲(Forest of Logs)"에 기록합니다.
 
 ## 절차
