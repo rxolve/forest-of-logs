@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s | 로그의 숲',
   },
   description:
-    '매일의 개발 세션을 하루키 문체로 기록하는 개발 일지. A developer journal written in warm, reflective prose.',
+    '매일의 개발 세션을 기록하는 개발 일지. A developer journal written in calm, reflective prose.',
 };
 
 export default function RootLayout({

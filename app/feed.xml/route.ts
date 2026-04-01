@@ -25,7 +25,7 @@ export async function GET() {
   <channel>
     <title>로그의 숲 — Forest of Logs</title>
     <link>${SITE_URL}</link>
-    <description>매일의 개발 세션을 하루키 문체로 기록하는 개발 일지</description>
+    <description>매일의 개발 세션을 기록하는 개발 일지</description>
     <language>ko</language>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
     ${items}
