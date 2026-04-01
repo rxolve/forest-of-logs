@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from 'next-themes';
 
 import { Navigation } from '@/app/_components/navigation';
@@ -40,6 +42,8 @@ export default function RootLayout({
             {children}
           </main>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
