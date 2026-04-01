@@ -5,6 +5,8 @@ import type { EntryMeta } from '@/app/_types/entry';
 const SITE_URL = 'https://forest-of-logs.vercel.app';
 
 export function generateEntryMetadata(entry: EntryMeta): Metadata {
+  const url = `${SITE_URL}/${entry.date}`;
+
   return {
     title: entry.title,
     description: `${entry.date} — ${entry.project}`,
@@ -12,8 +14,13 @@ export function generateEntryMetadata(entry: EntryMeta): Metadata {
       title: entry.title,
       description: `${entry.date} — ${entry.project}`,
       type: 'article',
-      url: `${SITE_URL}/${entry.date}`,
+      url,
       siteName: '로그의 숲 — Forest of Logs',
+      publishedTime: entry.date,
+      tags: entry.tags,
+    },
+    alternates: {
+      canonical: url,
     },
   };
 }

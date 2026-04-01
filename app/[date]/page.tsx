@@ -29,8 +29,21 @@ export default async function EntryPage({ params }: PageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: entry.title,
+    datePublished: entry.date,
+    url: `https://forest-of-logs.vercel.app/${entry.slug}`,
+    keywords: entry.tags,
+  };
+
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="mb-10">
         <Link
           href="/"
