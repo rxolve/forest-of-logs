@@ -87,6 +87,18 @@ body {
   line-height: 1.6;
 }
 
+.prose pre:has(code[data-language='ascii']) {
+  background-color: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-muted) 30%, transparent);
+  padding: 1rem;
+  font-size: 0.5rem;
+  line-height: 1.15;
+}
+
+:is(.dark) .prose pre:has(code[data-language='ascii']) {
+  border-color: color-mix(in srgb, var(--color-muted-dark) 30%, transparent);
+}
+
 .prose code {
   font-family: var(--font-mono);
   font-size: 0.875em;
