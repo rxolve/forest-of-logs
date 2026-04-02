@@ -50,9 +50,19 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
-          <main className="mx-auto max-w-[680px] px-6 pb-24 pt-8">
+          <main className="mx-auto max-w-[680px] px-6 pb-16 pt-8">
             {children}
           </main>
+          <footer className="mx-auto max-w-[680px] px-6 pb-12">
+            <div
+              className="border-t pt-6 font-sans text-sm"
+              style={{ borderColor: 'color-mix(in srgb, var(--color-muted) 30%, transparent)', color: 'var(--color-muted)' }}
+            >
+              <a href="mailto:rxolve@gmail.com" className="transition-colors hover:opacity-70">
+                rxolve@gmail.com
+              </a>
+            </div>
+          </footer>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
