@@ -34,7 +34,7 @@ export default async function EntryPage({ params }: PageProps) {
     '@type': 'BlogPosting',
     headline: entry.title,
     datePublished: entry.date,
-    url: `https://forest-of-logs.vercel.app/${entry.slug}`,
+    url: `https://rxolve.github.io/${entry.slug}`,
     keywords: entry.tags,
   };
 

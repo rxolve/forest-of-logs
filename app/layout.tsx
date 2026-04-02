@@ -8,7 +8,7 @@ import { Navigation } from '@/app/_components/navigation';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://forest-of-logs.vercel.app'),
+  metadataBase: new URL('https://rxolve.github.io'),
   title: {
     default: '로그의 숲 — Forest of Logs',
     template: '%s | 로그의 숲',

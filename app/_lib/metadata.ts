@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import type { EntryMeta } from '@/app/_types/entry';
 
-const SITE_URL = 'https://forest-of-logs.vercel.app';
+const SITE_URL = 'https://rxolve.github.io';
 
 export function generateEntryMetadata(entry: EntryMeta): Metadata {
   const url = `${SITE_URL}/${entry.date}`;

@@ -2,7 +2,7 @@ import { getAllEntries } from '@/app/_lib/entries';
 
 export const dynamic = 'force-static';
 
-const SITE_URL = 'https://forest-of-logs.vercel.app';
+const SITE_URL = 'https://rxolve.github.io';
 
 export async function GET() {
   const entries = await getAllEntries();

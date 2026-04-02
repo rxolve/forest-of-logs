@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://forest-of-logs.vercel.app/sitemap.xml',
+    sitemap: 'https://rxolve.github.io/sitemap.xml',
   };
 }

@@ -4,7 +4,7 @@ import { getAllEntries } from '@/app/_lib/entries';
 
 export const dynamic = 'force-static';
 
-const SITE_URL = 'https://forest-of-logs.vercel.app';
+const SITE_URL = 'https://rxolve.github.io';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries = await getAllEntries();
