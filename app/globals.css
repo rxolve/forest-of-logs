@@ -93,6 +93,8 @@ body {
   padding: 1rem;
   font-size: 0.5rem;
   line-height: 1.15;
+  display: flex;
+  justify-content: center;
 }
 
 :is(.dark) .prose pre:has(code[data-language='ascii']) {
