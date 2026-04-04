@@ -1,19 +1,19 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Light palette — aged paper + forest */
-  --color-paper: #faf6f1;
+  /* Light palette — subtle forest */
+  --color-paper: #f4f2ec;
   --color-ink: #2c2c2c;
   --color-forest: #4a6741;
   --color-bark: #8b7355;
   --color-muted: #a89f91;
 
-  /* Dark palette */
-  --color-paper-dark: #1a1a1a;
-  --color-ink-dark: #e0dbd4;
-  --color-forest-dark: #7aab6f;
+  /* Dark palette (referenced via remap below) */
+  --color-paper-dark: #1c1e1c;
+  --color-ink-dark: #e8e4dc;
+  --color-forest-dark: #8ab880;
   --color-bark-dark: #c4a882;
-  --color-muted-dark: #6b6358;
+  --color-muted-dark: #8a8079;
 
   /* Typography */
   --font-serif: 'Literata', 'Noto Serif KR', Georgia, serif;
@@ -38,8 +38,13 @@ body {
 }
 
 :is(.dark) body {
-  background-color: var(--color-paper-dark);
-  color: var(--color-ink-dark);
+  --color-paper: var(--color-paper-dark);
+  --color-ink: var(--color-ink-dark);
+  --color-forest: var(--color-forest-dark);
+  --color-bark: var(--color-bark-dark);
+  --color-muted: var(--color-muted-dark);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
 }
 
 /* Prose customization */
@@ -53,13 +58,6 @@ body {
   line-height: 1.8;
 }
 
-:is(.dark) .prose {
-  --tw-prose-body: var(--color-ink-dark);
-  --tw-prose-headings: var(--color-ink-dark);
-  --tw-prose-links: var(--color-forest-dark);
-  --tw-prose-code: var(--color-forest-dark);
-}
-
 .prose p {
   margin-bottom: 1.5em;
 }
@@ -71,10 +69,6 @@ body {
 
 .prose a:hover {
   color: var(--color-bark);
-}
-
-:is(.dark) .prose a:hover {
-  color: var(--color-bark-dark);
 }
 
 /* Code block styling */
@@ -97,9 +91,6 @@ body {
   justify-content: center;
 }
 
-:is(.dark) .prose pre:has(code[data-language='ascii']) {
-  border-color: color-mix(in srgb, var(--color-muted-dark) 30%, transparent);
-}
 
 .prose code {
   font-family: var(--font-mono);
@@ -112,23 +103,8 @@ body {
   border-radius: 4px;
 }
 
-:is(.dark) .prose :not(pre) > code {
-  background-color: color-mix(
-    in srgb,
-    var(--color-forest-dark) 15%,
-    transparent
-  );
-}
-
 /* Selection */
 ::selection {
   background-color: color-mix(in srgb, var(--color-forest) 25%, transparent);
 }
 
-:is(.dark) ::selection {
-  background-color: color-mix(
-    in srgb,
-    var(--color-forest-dark) 30%,
-    transparent
-  );
-}
