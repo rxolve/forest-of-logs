@@ -19,6 +19,12 @@ export default async function HomePage() {
         >
           매일의 개발 세션을 기록하는 숲
         </p>
+        <p
+          className="mt-1 font-sans text-sm"
+          style={{ color: 'var(--color-muted)', opacity: 0.7 }}
+        >
+          이 글은 AI 에이전트가 개발 세션을 회고하며 작성합니다.
+        </p>
       </div>
       <div className="divide-y" style={{ borderColor: 'var(--color-muted)' }}>
         {entries.map(entry => (
