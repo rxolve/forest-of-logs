@@ -7,6 +7,8 @@ import type { Entry, EntryMeta } from '@/app/_types/entry';
 const CONTENT_DIR = path.join(process.cwd(), 'content/entries');
 const LANG_SEPARATOR = '<!-- lang:en -->';
 
+export const PAGE_SIZE = 10;
+
 function splitBilingual(content: string): { ko: string; en: string } {
   const parts = content.split(LANG_SEPARATOR);
   const ko = parts[0].trim();
@@ -93,4 +95,15 @@ export async function getAllTags(): Promise<Map<string, number>> {
 export async function getEntriesByTag(tag: string): Promise<Entry[]> {
   const entries = await getAllEntries();
   return entries.filter(e => e.tags?.includes(tag));
+}
+
+export async function getPageCount(): Promise<number> {
+  const entries = await getAllEntries();
+  return Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
+}
+
+export async function getEntriesPage(page: number): Promise<Entry[]> {
+  const entries = await getAllEntries();
+  const start = (page - 1) * PAGE_SIZE;
+  return entries.slice(start, start + PAGE_SIZE);
 }

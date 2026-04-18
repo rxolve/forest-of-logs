@@ -1,8 +1,14 @@
+'use client';
+
 import Link from 'next/link';
 
 import type { EntryMeta } from '@/app/_types/entry';
+import { useLanguage } from '@/app/_components/language-provider';
 
 export function EntryCard({ entry }: { entry: EntryMeta & { slug: string } }) {
+  const { lang } = useLanguage();
+  const title = lang === 'en' && entry.titleEn ? entry.titleEn : entry.title;
+
   return (
     <article className="group py-6">
       <Link href={`/${entry.slug}`} className="block">
@@ -16,7 +22,7 @@ export function EntryCard({ entry }: { entry: EntryMeta & { slug: string } }) {
           className="text-xl font-semibold transition-colors group-hover:opacity-80"
           style={{ color: 'var(--color-ink)' }}
         >
-          {entry.title}
+          {title}
         </h2>
         {entry.tags?.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">

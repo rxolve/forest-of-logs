@@ -1,8 +1,12 @@
-import { getAllEntries } from '@/app/_lib/entries';
+import { getEntriesPage, getPageCount } from '@/app/_lib/entries';
 import { EntryCard } from '@/app/_components/entry-card';
+import { Pagination } from '@/app/_components/pagination';
 
 export default async function HomePage() {
-  const entries = await getAllEntries();
+  const [entries, pageCount] = await Promise.all([
+    getEntriesPage(1),
+    getPageCount(),
+  ]);
 
   return (
     <section>
@@ -36,6 +40,7 @@ export default async function HomePage() {
           아직 심어진 나무가 없습니다.
         </p>
       )}
+      <Pagination current={1} total={pageCount} />
     </section>
   );
 }

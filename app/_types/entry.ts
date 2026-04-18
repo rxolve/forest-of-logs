@@ -1,5 +1,6 @@
 export interface EntryMeta {
   title: string;
+  titleEn?: string;
   date: string;
   style: string;
   tags: string[];

@@ -8,9 +8,15 @@ const styles: Record<string, WritingStyleConfig> = {
 export function getStyle(name: string): WritingStyleConfig {
   const style = styles[name];
   if (!style) {
-    throw new Error(`Unknown style: ${name}. Available: ${Object.keys(styles).join(', ')}`);
+    throw new Error(
+      `Unknown style: ${name}. Available: ${Object.keys(styles).join(', ')}`
+    );
   }
   return style;
+}
+
+export function tryGetStyle(name: string): WritingStyleConfig | undefined {
+  return styles[name];
 }
 
 export function getAllStyles(): WritingStyleConfig[] {

@@ -1,7 +1,14 @@
+export interface StyleExample {
+  label: string;
+  bad: string;
+  good: string;
+}
+
 export interface WritingStyleConfig {
   name: string;
   description: string;
-  systemPrompt: string;
-  userPromptTemplate: string;
-  exampleEntry: string;
+  principles: string[];
+  forbid: string[];
+  examples: StyleExample[];
+  outputFormat: string;
 }
